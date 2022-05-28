@@ -42,7 +42,7 @@ df =  pd.read_csv('features/target_sales.csv')
 test_df =  pd.read_csv('data/test.csv')
 st.markdown('### Sample test data input')
 st.write(test_df.head(10))
-model = pickle.load(open('models/reg-2022-05-28-07-54-28.pkl', "rb"))
+model = pickle.load(open('models/LSTM_sales-2022-05-28-13-30-53.pkl', "rb"))
 y_preds = model.predict(df)
 prediction_df = df.copy()
 prediction_df["Pred_sales"] = y_preds
