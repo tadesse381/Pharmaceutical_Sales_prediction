@@ -39,7 +39,7 @@ if(predict_button):
 st.set_option('deprecation.showPyplotGlobalUse', False)
 st.header('Prediction on test data')
 df =  pd.read_csv('features/test_features.csv')
-test_df =  pd.read_csv('src/data/test.csv')
+test_df =  pd.read_csv('data/test.csv')
 st.markdown('### Sample test data input')
 st.write(test_df.head(10))
 model = pickle.load(open('models/reg-2022-05-28-07-54-28.pkl', "rb"))
