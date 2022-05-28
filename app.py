@@ -13,7 +13,7 @@ import streamlit as st
 import pandas as pd
 from scripts.logger_config import logger
 sys.path.append(os.path.abspath(os.path.join('./scripts')))
-from file_handler import FileHandler
+#from file_handler import FileHandler
 st.set_page_config(page_title="Rossman Pharmaceuticals")
 
 st.title('Rossmann Pharmaceuticals Prediction Dashboard')
@@ -44,7 +44,7 @@ def write():
     test_df =  pd.read_csv('src/data/test.csv')
     st.markdown('### Sample test data input')
     st.write(test_df.head(10))
-    model = pickle.load(open('models/XGB Regressor_Sales 2021-08-01-16:01:09.pkl', "rb"))
+    model = pickle.load(open('models/reg-2022-05-28-07-54-28.pkl', "rb"))
     y_preds = model.predict(df)
     prediction_df = df.copy()
     prediction_df["Pred_sales"] = y_preds
