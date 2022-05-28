@@ -44,7 +44,7 @@ def write():
     test_df = file_handler.read_csv('src/data/test.csv')
     st.markdown('### Sample test data input')
     st.write(test_df.head(10))
-    model = pickle.load(open('models/XGB Regressor_Sales 2021-08-01-16:01:09.pkl', "rb"))
+    model = pickle.load(open('models/LSTM_sales-2022-05-28-13-30-53.pkl/', "rb"))
     y_preds = model.predict(df)
     prediction_df = df.copy()
     prediction_df["Pred_sales"] = y_preds
