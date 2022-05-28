@@ -38,7 +38,6 @@ if(predict_button):
 """Used to write the page in the app.py file"""
 st.set_option('deprecation.showPyplotGlobalUse', False)
 st.header('Prediction on test data')
-file_handler = FileHandler()
 df =  pd.read_csv('features/test_features.csv')
 test_df =  pd.read_csv('src/data/test.csv')
 st.markdown('### Sample test data input')
