@@ -43,7 +43,7 @@ test_df =  pd.read_csv('dbdata/data/test.csv')
 st.markdown('### Sample test data input')
 st.write(test_df.head(10))
 model = pickle.load(open('models/reg-2022-05-28-07-54-28.pkl', "rb"))
-y_preds = model.predict(df)
+y_preds = model.predict(test_df)
 prediction_df = df.copy()
 prediction_df["Pred_sales"] = y_preds
 st.markdown('### Sample prediction output')
