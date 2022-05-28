@@ -38,7 +38,7 @@ if(predict_button):
 """Used to write the page in the app.py file"""
 st.set_option('deprecation.showPyplotGlobalUse', False)
 st.header('Prediction on test data')
-df =  pd.read_csv('features/test_features.csv')
+df =  pd.read_csv('features/target_sales.csv')
 test_df =  pd.read_csv('data/test.csv')
 st.markdown('### Sample test data input')
 st.write(test_df.head(10))
