@@ -1,6 +1,6 @@
 import unittest
 
-from myscripts import util
+from scripts import util
 
 class TestUtils(unittest.TestCase):
   
