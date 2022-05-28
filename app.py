@@ -1,27 +1,40 @@
-import time
-from logging import log
 import streamlit as st
-import pandas as pd
-from scripts.logger_config import logger
+import awesome_streamlit as ast
+import src.pages.home
+import src.pages.data
+import src.pages.pred
+import src.pages.insights
 
-st.set_page_config(page_title="Rossman Pharmaceuticals")
+ast.core.services.other.set_logging_format()
 
-st.title('Rossmann Pharmaceuticals Prediction Dashboard')
-st.sidebar.write('Sidebar')
+# create the choices
+PAGES = {
+    "Home": src.pages.home,
+    "Data":src.pages.data,
+    "Insights": src.pages.insights,
+    "Run Predictions": src.pages.pred
+}
 
-## INPUTS
-store_id = st.sidebar.number_input('Store Id', min_value=0, step=1)
-test_file = st.sidebar.file_uploader("Upload Files",type=['csv'])
-predict_button = st.sidebar.button('Predict')
 
-try:
-  test_df = pd.read_csv(test_file)
-  st.write(test_df.head())
-except:
-  logger.error('File Not Correct')
-  print("In Correct File type")
+# render the pages
+def main():
+    """Main function of the App"""
+    st.sidebar.title("Navigation")
+    selection = st.sidebar.radio("Go to", list(PAGES.keys()))
 
-if(predict_button):
-  st.write(f"Store = {store_id} Prediction Begin ...")
-  time.sleep(2000)
-  st.write('Sorry, Dashboard not completed build on progress')
+    page = PAGES[selection]
+
+    with st.spinner(f"Loading {selection} ..."):
+        ast.shared.components.write_page(page)
+
+    st.sidebar.title("About")
+    st.sidebar.info(
+        """
+        This App is an end-to-end product that enables the Rosemann pharmaceutical company to 
+        view predictions on sales across their stores and 6 weeks ahead of time and the trends expected.
+"""
+    )
+
+# run it
+if __name__ == "__main__":
+    main()
